@@ -1183,10 +1183,664 @@ Antigravity:
 
 ---
 
+---
+
+## 🛠️ Pratik Kullanım Kılavuzu - Gerçek Proje Örneği
+
+**Kaynak:** YouTube video - TODO uygulaması + Google Calendar entegrasyonu (23 Kasım 2025)
+
+Bu video, Antigravity ile **sıfırdan bir TODO uygulaması** geliştirilip **Google Calendar API** ile entegre edilmesini gösteriyor. Gerçek dünya projesi!
+
+---
+
+### 🎯 Video'da Yapılanlar (Baştan Sona)
+
+```
+1. TODO uygulaması geliştirme (Planning mode)
+2. Implementation plan review
+3. Canlı browser testleri
+4. Google Calendar API entegrasyonu
+5. Gerçek kullanım testi
+6. Otomatik commit message
+```
+
+---
+
+### 📐 Agent Manager vs Editor
+
+#### Agent Manager (Sol Pencere)
+
+**Amaç:** Birden fazla projeyi **aynı anda** yönetmek
+
+```
+Agent Manager:
+├─ Workspace 1 → TODO App
+├─ Workspace 2 → Başka Proje
+├─ Workspace 3 → Başka Proje
+└─ Senkron çalışıyor (parallel agents)
+```
+
+**Önemli Not - Video'dan:**
+> "Workspace'i bir proje gibi düşünün. Her workspace bir proje dosyası. Ben ilk başta workspace'leri sanki bir çalışma alanı yaratıp içerisine projeler yaratacakmışız gibi düşündüm ama editöre geçince buradaki projeler aynı projenin içerisinde toplanıyor."
+
+**Doğru Kullanım:**
+```
+❌ YANLIŞ:
+Workspace "Frontend"
+├─ Project 1
+├─ Project 2
+└─ Project 3
+
+✅ DOĞRU:
+Workspace 1 = TODO App (tek proje)
+Workspace 2 = Blog App (tek proje)
+Workspace 3 = E-commerce (tek proje)
+```
+
+#### Editor (Sağ Pencere)
+
+**Amaç:** Cursor/Windsurf gibi klasik IDE deneyimi
+
+```
+Editor:
+├─ Code editor
+├─ Chat panel
+├─ Terminal
+├─ File explorer
+└─ Source control
+```
+
+**Senkronizasyon:**
+> "IDE ve Agent Manager senkron çalışıyor. Aynı dosyalar burada da var. Aynı command buraya da geliyor. Buradaki chat'le, buradaki chat de senkron."
+
+**Geçiş:**
+- Agent Manager → Editor: "Open Editor" butonu
+- Editor → Agent Manager: `Cmd + E` (Mac) / `Ctrl + E` (Windows)
+
+---
+
+### 🎨 Playground vs Workspace
+
+#### Playground
+
+**Ne İçin:** Hızlı prototipleme
+
+```
+Playground:
+├─ Klasör seçmeden çalışırsın
+├─ Dosyalar temp klasöre gidiyor
+├─ Basit, basic testler için
+└─ "Use Playground" butonu ile başlar
+```
+
+**Kullanım:**
+> "Aklınızdaki projeleri prototipe dökebilmeniz için hızlı bir alan yaratmışlar."
+
+#### Workspace
+
+**Ne İçin:** Gerçek projeler
+
+```
+Workspace:
+├─ Klasör seçersin
+├─ Dosyalar o klasörde
+├─ Production kullanım
+└─ Git entegrasyonu
+```
+
+---
+
+### 🚀 Planning Mode vs Fast Mode
+
+#### Planning Mode (Önerilen)
+
+**Ne Yapıyor:**
+```
+1. Implementation Plan oluşturur
+2. Senin onayını bekler
+3. Task List yaratır
+4. Adım adım ilerler
+5. Browser testleri yapar
+6. Report oluşturur
+```
+
+**Video'dan Örnek:**
+```
+Prompt: "Bana bir TODO uygulaması geliştir"
+
+Planning Mode Akışı:
+├─ 1. Implementation Plan (review bekliyor)
+├─ 2. Sen comment bırakırsın ("Delete butonu istiyorum")
+├─ 3. Review gönderirsin
+├─ 4. Plan güncellenir
+├─ 5. Tasks oluşturur:
+│   ├─ Setup project structure
+│   ├─ Create components
+│   ├─ Implement features
+│   ├─ Browser testing
+│   └─ Generate report
+├─ 6. Her task'ı tek tek yapar
+└─ 7. Sonunda rapor verir
+```
+
+**Comment Sistemi:**
+```
+Implementation Plan'da:
+1. "Command on this line" butonuna tıkla
+2. İstediğin değişikliği yaz (örn: "Delete butonu istiyorum")
+3. "Add command"
+4. "Review" butonuna tıkla
+5. Değişikliği gönder
+```
+
+#### Fast Mode
+
+**Ne Yapıyor:**
+```
+1. Direkt kodu yazar
+2. Plan, task yok
+3. Cursor/Windsurf gibi
+4. index.html veya npm run dev ile açarsın
+```
+
+**Ne Zaman Kullan:**
+- Basit görevler
+- Hızlı işler
+- Plan gerekmeyecek şeyler
+
+---
+
+### 🎬 Browser Testing - Video'nun En Sevdiği Özellik
+
+#### Canlı Test Süreci
+
+Video'dan:
+> "Mükemmel bir şey. En çok sevdiğim şey browser'ı açıp kendisi manuel canlı bir şekilde test etmesi."
+
+**Test Adımları:**
+```
+Prompt: "Uygulamanın canlı testini gerçekleştir"
+
+Agent:
+1. URL'i açar
+2. 5 saniye bekler
+3. TODO ekler ("Alışveriş yap")
+4. Screenshot alır
+5. TODO ekler ("Spor yap")
+6. Screenshot alır
+7. TODO'yu tamamlar (checkbox)
+8. Screenshot alır
+9. Active filtresi tıklar
+10. Screenshot alır
+11. TODO'yu siler
+12. Screenshot alır
+13. Test raporunu oluşturur
+```
+
+**Görsel:**
+> "Sağ tarafta canlı canlı izliyoruz. Sol tarafta da adımları tek tek yapıyor. Mouse'u tamamen kendi kontrol ediyor."
+
+#### Screenshot & Video Playback
+
+**Screenshot:**
+```
+Her adımdan sonra:
+├─ Screenshot alır
+├─ Artifact olarak kaydeder
+└─ Raporda gösterir
+```
+
+**Video Playback:**
+> "Playback kısmından da tekrar izleyebiliyoruz. Bu da muhteşem bir şey. Testi başlatın, gidin işinizi halledin. Gelin testin videosunu da izleyin burada tekrardan."
+
+```
+Test Workflow:
+1. Testi başlat
+2. Following butonuna bas (takip et)
+3. Ya canlı izle
+4. Ya da başka işini yap
+5. Geri gel, playback'ten video izle
+```
+
+---
+
+### 🔧 Google Calendar Entegrasyonu - Gerçek Proje
+
+#### Senaryo
+
+TODO uygulamasına eklenen her item'ı **bugünün tarihinde** Google Calendar'a eklemek.
+
+#### Adım 1: Google Cloud Console Setup
+
+**1. Proje Oluştur**
+```
+1. cloud.google.com/console → Yeni proje
+2. Proje adı ver
+3. Oluştur
+```
+
+**2. OAuth Client ID Oluştur**
+```
+1. APIs & Services → Credentials
+2. Create Credentials → OAuth Client ID
+3. Application type: Web application
+4. Authorized JavaScript origins:
+   http://localhost:3000 (veya port'un)
+5. Client ID'yi kopyala
+```
+
+**3. Test Users Ekle**
+```
+1. OAuth consent screen
+2. Audience (Kitle) kısmına gel
+3. Gmail adresini ekle (test user)
+```
+
+**Önemli Uyarı - Video'dan:**
+> "Hangi Gmail'ile Google Calender'e erişecekseniz o Gmail'i buraya eklemeniz gerekiyor. Yoksa Gmail sistemi bunu kullanmanıza izin vermiyor."
+
+**4. Google Calendar API'yi Aktif Et**
+```
+1. APIs & Services → Library
+2. "Google Calendar API" ara
+3. Enable
+4. 1-2 dakika bekle
+```
+
+#### Adım 2: Code'a Client ID Ekle
+
+```javascript
+// Editor'dan yapman gerekiyor (Agent Manager'dan değil!)
+
+const CLIENT_ID = 'YOUR_CLIENT_ID_HERE'; // Buraya yapıştır
+```
+
+**Not:**
+> "Bu kod değişikliğini Agent Manager'dan yapamıyorsunuz. Editor'den yapmanız gerekiyor."
+
+#### Adım 3: Uygulama Testi
+
+**Adımlar:**
+```
+1. npm run dev (localhost başlat)
+2. "Connect Google Calendar" butonuna tıkla
+3. Gmail seçimi yap (consent screen)
+4. "Google Calendar connected" mesajı
+5. TODO ekle → "Test 1"
+6. "Takvime başarıyla kaydedildi" mesajı
+7. Google Calendar'ı aç → Bugüne eklendi!
+```
+
+**Video'dan:**
+> "Sol tarafa Google Calendar'ı açtım. Buraya test 1 adında bir task ekliyorum. Eklendi. Gördüğünüz gibi sol tarafa eklendi. Ben böyle birkaç uygulamanın birbirine bağlanmasını çok seviyorum. Bende bir heyecanı uyandırıyor."
+
+---
+
+### 📊 Following Butonu
+
+**Ne İşe Yarıyor:**
+Agent ne yapıyorsa **otomatik takip et**
+
+```
+Following Açık:
+├─ Agent terminal açtı → Senin ekranında terminal açılır
+├─ Agent dosya açtı → Senin ekranında açılır
+├─ Agent browser açtı → Senin ekranında açılır
+└─ Canlı canlı izlersin
+
+Following Kapalı:
+├─ Agent arka planda çalışır
+├─ Sen başka işini yaparsın
+└─ İşi bitince bakarsın
+```
+
+**Kullanım:**
+> "Göz ikonuna bastığımızda şu an following diyor. Yani takip ediyor diyor. Agent terminal açarsa sağ tarafta terminali açıyor."
+
+---
+
+### 📝 Otomatik Commit Message
+
+**Özellik:** Beta aşamasında ama iyi çalışıyor
+
+**Kullanım:**
+```
+1. Git init (local repository)
+2. Source Control paneline gel
+3. "Generate" butonuna tıkla
+4. AI commit message oluşturur
+5. OK'e bas → Commit edilir
+```
+
+**Video'dan:**
+> "Generate'e bastığımızda zaten ilk commit'imiz. Commit mesajımızı da oluşturdu. Buradan OK'e basarak commit'imizi de gönderebiliyoruz."
+
+---
+
+### 📋 Gerçek Workflow - Adım Adım
+
+#### 1. Proje Başlatma
+
+```
+Agent Manager → New Conversation
+├─ Workspace seç (veya yeni oluştur)
+├─ Planning Mode seç
+├─ Model seç (Gemini 3 Pro High)
+└─ Prompt yaz: "Bana bir TODO uygulaması geliştir"
+```
+
+#### 2. Implementation Plan Review
+
+```
+AI → Implementation Plan oluşturur
+├─ Hedef
+├─ Yapılacaklar
+├─ Dosya yapısı
+└─ Teknoloji stack
+
+Sen:
+├─ Oku
+├─ Comment bırak ("Delete butonu ekle")
+├─ Review gönder
+```
+
+#### 3. Task Execution
+
+```
+AI → Task List oluşturur:
+├─ [In Progress] Setup project
+├─ [Pending] Create components
+├─ [Pending] Implement features
+├─ [Pending] Browser testing
+└─ [Pending] Generate report
+
+AI otomatik ilerler:
+├─ Terminal komutları çalıştırır
+├─ Dosyaları oluşturur
+├─ Kodu yazar
+└─ Adım adım tamamlar
+```
+
+#### 4. Browser Testing
+
+```
+AI:
+├─ Dev server başlatır (npm run dev)
+├─ Browser açar
+├─ Test adımlarını yapar
+├─ Her adımda screenshot
+├─ Video kaydeder
+└─ Test raporunu oluşturur
+
+Sen:
+├─ Canlı izle (Following ON)
+├─ Ya da başka iş yap, sonra video izle
+```
+
+#### 5. Report Review
+
+```
+AI → Walkthrough/Report:
+├─ Proje yapısı
+├─ Design elements
+├─ Screenshots
+├─ Video
+└─ Next steps
+```
+
+---
+
+### 🎓 Video'nun Önemli Tespit ve Tavsiyeleri
+
+#### Workspace Kullanımı
+
+**Yanlış Anlama:**
+> "Her workspace bir proje gibi düşünün. Ben ilk başta workspace'leri sanki bir çalışma alanı yaratıp içerisine projeler yaratacakmışız gibi düşündüm ama editöre geçince buradaki projeler aynı projenin içerisinde toplanıyor. Çok da sağlıklı değil."
+
+**Doğru Kullanım:**
+```
+✅ Her workspace = 1 proje
+❌ Bir workspace = birden fazla proje
+```
+
+#### Browser Testing Övgüsü
+
+> "Yani sırf bu özellik için bile Google'ın IDE'sini kullanabilirim. Yani o kadar söyleyeyim."
+
+**Neden Bu Kadar İyi?**
+```
+1. Canlı canlı izliyorsun
+2. Her adımı screenshot
+3. Video kaydediyor
+4. Rapor oluşturuyor
+5. Playback ile tekrar izleyebiliyorsun
+6. Chrome-Google entegrasyonu mükemmel
+```
+
+#### Gelecek Tahmini
+
+> "Bu şekilde gelişmeye devam ederse IDE'ler arasında ilk üçe girebilir. Şu an yeni çıktığı için bir şey söyleyemiyorum ama ilk üçe kesin girer gibi. Çünkü arkasında da Google var."
+
+---
+
+### 🔌 Test Sprite MCP Entegrasyonu
+
+Video'da bahsedilen ek araç: **Otonom AI test agent**
+
+#### Kurulum
+
+```
+1. testsprite.io → Try MCP Free
+2. Sign up (ücretsiz 1 ay)
+3. Create API Key
+4. API Key'i kopyala
+5. Cursor/Antigravity'ye ekle (Add to Cursor)
+```
+
+#### Kullanım
+
+```
+Cursor'da:
+"Can you test this project with Test Sprite?"
+
+Test Sprite:
+├─ Frontend/Backend seç
+├─ PRD dosyası yükle (varsa)
+├─ Test planları oluşturur
+├─ Testleri çalıştırır
+├─ Video kaydeder
+└─ HTML rapor verir
+```
+
+**Sonuç Örneği:**
+```
+12 testten 10'u başarılı
+Başarı oranı: %83
+```
+
+**Rapor Formatları:**
+- Web (HTML dosyası)
+- Video playback
+- Detaylı log
+
+---
+
+### 💡 Pratik İpuçları
+
+#### 1. Google API Hatalarından Kaçınma
+
+Video'nun yaşadığı zorluklar:
+
+```
+Hatalar:
+├─ Client ID eksik → Cloud Console'dan al
+├─ Localhost URL eklenmemiş → Authorized origins'e ekle
+├─ Test user eklenmemiş → OAuth consent screen'e ekle
+├─ Calendar API aktif değil → Enable et
+└─ 1-2 dakika geç → API aktif olana kadar bekle
+```
+
+**Tavsiyeleri:**
+> "Bu adımları ben burayı okumadığım için tek tek hata ala ala ilerledim. Siz bunu yapmayın diye en baştan size anlatıyorum."
+
+#### 2. Maliyet
+
+> "Şu an kullandıklarım hepsi tamamen ücretsiz. IDE ücretsiz, API ücretsiz. Bunu tamamen yapabilirsiniz."
+
+```
+Ücretsiz:
+├─ Google Antigravity (public preview)
+├─ Google Calendar API (quota dahilinde)
+├─ Test Sprite (1 ay ücretsiz)
+└─ Google Cloud (free tier)
+```
+
+#### 3. Documentation İyiliği
+
+> "Proje dokümanları çok güzel oluşturuyor bu arada. İkonları olsun, başlıkları olsun çok güzel bir doküman çıkarıyor ortaya."
+
+**Report Özellikleri:**
+- İkonlar
+- Başlıklar
+- Screenshots
+- Video
+- Adım adım açıklama
+
+---
+
+### ✅ Sonuç - Video'nun Değerlendirmesi
+
+**Genel Kanaat:**
+> "Bu kadar kod yazıyoruz. Bunları bir test etmemiz gerekiyor... İdelerin arasında ilk üçe girebilir."
+
+**Artılar:**
+```
+✅ Browser testing mükemmel
+✅ Implementation plan + task system
+✅ Video playback
+✅ Screenshot her adımda
+✅ Raporlar çok iyi
+✅ Google entegrasyonları kolay
+✅ Otomatik commit message
+✅ Ücretsiz
+```
+
+**Eksiler (belirtilmemiş ama çıkarımlar):**
+```
+⚠️ Yeni, henüz beta
+⚠️ Workspace kullanımı başta kafa karıştırıcı
+⚠️ Bazı adımlar manuel (client ID gibi)
+```
+
+---
+
+### 📊 Gerçek Proje Karşılaştırması
+
+| | Video 2 (Eleştirel) | Video 3 (Pratik) |
+|---|---|---|
+| **Proje** | Next.js ürün sayfası | TODO + Google Calendar |
+| **Sonuç** | ❌ Başarısız | ✅ Başarılı |
+| **Deneyim** | Hayal kırıklığı | Olumlu |
+| **Zaman** | 20+ dk, tamamlanmadı | Tamamlandı |
+| **Karmaşıklık** | Basit görev | Orta (API entegrasyonu) |
+
+**Çıkarım:**
+```
+Video 2: "Cursor'dan farkı yok"
+Video 3: "İlk üçe girebilir"
+
+Neden Fark Var?
+├─ Farklı kullanıcılar
+├─ Farklı beklentiler
+├─ Farklı prompt kalitesi?
+├─ Farklı zamanlar (server durumu?)
+└─ Farklı görev tipleri
+```
+
+---
+
+### 🎯 Bu Video'dan Çıkaracak Dersler
+
+#### 1. Planning Mode Kullan
+
+```
+Basit görev de olsa Planning Mode:
+├─ Implementation plan görürsün
+├─ Comment bırakabilirsin
+├─ Task'ları takip edersin
+├─ Browser test yapar
+└─ Rapor alırsın
+
+Fast Mode:
+└─ Sadece kod yazar, o kadar
+```
+
+#### 2. Browser Testing'i Kullan
+
+> "Yani sırf bu özellik için bile Google'ın IDE'sini kullanabilirim."
+
+```
+Test Workflow:
+1. "Uygulamanın canlı testini gerçekleştir"
+2. Following ON → Canlı izle
+3. Screenshot'ları incelemek
+4. Video playback'i izle
+5. Raporu oku
+```
+
+#### 3. Google API Entegrasyonları Kolay
+
+```
+Antigravity + Google Services:
+├─ Calendar API ✅
+├─ Drive API (muhtemelen) ✅
+├─ Gmail API (muhtemelen) ✅
+└─ Google Cloud'un her şeyi
+
+Sebep: Google'ın kendi ürünü, entegrasyon doğal
+```
+
+#### 4. Real-World Project Test Et
+
+```
+Benchmark (Tetris) → Anlamsız
+Real Project (TODO + API) → Anlamlı
+
+Bu video gerçek bir proje yaptı:
+├─ CRUD işlemleri
+├─ API entegrasyonu
+├─ OAuth flow
+├─ Error handling
+└─ Production-ready kod (neredeyse)
+```
+
+---
+
+### 🔮 Video'nun Geleceğe Bakışı
+
+> "Bu şekilde gelişmeye devam ederse IDE'ler arasında ilk üçe girebilir... Çünkü arkasında da Google var. İyi de fonlandığını düşünüyorum."
+
+**Potansiyel:**
+```
+Güçlü Yönler:
++ Browser testing
++ Google ecosystem
++ Documentation quality
++ Free tier cömert
+
+Zayıf Yönler (şimdilik):
+- Yeni, beta
+- Cursor/Windsurf'e göre az bilinen
+- Community henüz küçük
+```
+
+---
+
 **Son Güncelleme:** 2025-11-23
 **Kaynaklar:**
 - YouTube video transkripti 1 (Hype & Tanıtım)
 - YouTube video transkripti 2 (Gerçekçi Test)
+- YouTube video transkripti 3 (Pratik Kullanım - TODO + Google Calendar)
 - Resmi dokümantasyon
 - Web araştırması
 
